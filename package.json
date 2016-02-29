@@ -1,0 +1,26 @@
+{
+  "name": "express_cookbook",
+  "version": "1.0.0",
+  "main": "server/app.js",
+  "scripts": {
+    "testServer": "NODE_ENV='dev' mocha -R spec server/tests/**/*.spec.js",
+	"start": "nodemon --debug server/app.js"
+  },
+  "author": "Raven Avalon",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "helmet": "^1.2.0",
+    "jade": "^1.11.0",
+    "mongodb": "^2.1.7",
+    "mongoose": "^4.4.5"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5",
+    "should": "^8.2.2",
+    "supertest": "^1.2.0",
+    "webpack": "^1.12.14"
+  }
+}
