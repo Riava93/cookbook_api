@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models/recipe');
 var Recipe = models.recipes;
-var Ingredient = models.ingredient;
+var Ingredient = models.ingredients;
 
 
 router.route('/')
@@ -22,11 +22,11 @@ router.route('/')
 
 		var recipe = new Recipe(req.body);
 
-		recipe.save(function(err) {
+		recipe.save(function(err, recipe) {
 			if (err) {
 				res.send(err);
 			}
-			res.json({ message: 'Recipe created!' });
+			res.json({ message: 'success', recipe: recipe });
 		});
 	});
 
@@ -48,7 +48,7 @@ router.route('/:recipe_id')
 
 		Recipe.update(req.params.recipe_id, { $set: newRecipe }, null, function(err, recipe) {
 			if (err) { res.send(err); }
-			res.json({ message: 'success' });
+			res.json({ message: 'success', recipe: recipe });
 		});
 	})
 
@@ -77,7 +77,7 @@ router.route('/:recipe_id/ingredients')
 			recipe.ingreds.push(postData);
 			recipe.save();
 
-			res.json({ message: 'success' });
+			res.json({ message: 'success', recipe: recipe });
 		});
 	});
 
